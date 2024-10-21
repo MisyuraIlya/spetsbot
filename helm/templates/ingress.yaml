@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: spetsbot-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - path: /client
+        pathType: Prefix
+        backend:
+          service:
+            name: client
+            port:
+              number: {{ .Values.client.service.port }}
+      - path: /bots
+        pathType: Prefix
+        backend:
+          service:
+            name: bots
+            port:
+              number: {{ .Values.bots.service.port }}

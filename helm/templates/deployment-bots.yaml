@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bots
+spec:
+  replicas: {{ .Values.bots.replicaCount }}
+  selector:
+    matchLabels:
+      app: bots
+  template:
+    metadata:
+      labels:
+        app: bots
+    spec:
+      containers:
+      - name: bots
+        image: "{{ .Values.bots.image.repository }}:{{ .Values.bots.image.tag }}"
+        ports:
+        - containerPort: {{ .Values.bots.service.targetPort }}

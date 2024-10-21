@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: listener
+spec:
+  replicas: {{ .Values.listener.replicaCount }}
+  selector:
+    matchLabels:
+      app: listener
+  template:
+    metadata:
+      labels:
+        app: listener
+    spec:
+      containers:
+      - name: listener
+        image: "{{ .Values.listener.image.repository }}:{{ .Values.listener.image.tag }}"
+        ports:
+        - containerPort: {{ .Values.listener.service.targetPort }}

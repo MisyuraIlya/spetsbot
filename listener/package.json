@@ -1,0 +1,19 @@
+{
+  "name": "spetsbot-listener",
+  "version": "1.0.0",
+  "description": "listener service",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node-dev src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.7.7",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "ts-node-dev": "^2.0.0"
+  }
+}

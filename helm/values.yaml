@@ -1,0 +1,43 @@
+listener:
+  image:
+    repository: spetsar/spetsbot-listener
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    port: 5000
+    targetPort: 5000
+  replicaCount: 1
+
+client:
+  image:
+    repository: spetsar/spetsbot-client
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    port: 3000
+    targetPort: 3000
+  replicaCount: 1
+
+bots:
+  image:
+    repository: spetsar/spetsbot-bots
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    port: 4000
+    targetPort: 4000
+  replicaCount: 1
+
+nats:
+  image:
+    repository: nats-streaming
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    port: 4222
+    targetPort: 4222
+  replicaCount: 1
+
+ingress:
+  enabled: true
+  host: spetsbot.dev
